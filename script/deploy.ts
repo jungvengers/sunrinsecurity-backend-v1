@@ -4,7 +4,6 @@ env.config()
 import { NodeSSH } from "node-ssh"
 
 const ssh = new NodeSSH()
-
 const deploy = async () => {
     if (process.env.PORT) {
         await ssh.connect({
@@ -18,11 +17,12 @@ const deploy = async () => {
         await ssh.connect({
             host: process.env.HOST,
             username: process.env.ID,
-            password: process.env.PW
+            password: process.env.PW,
+            port: 22
         })
     }
     await ssh.execCommand(`
-        cd ~/backend &&
+        cd backend &&
         git pull &&
         yarn build &&
         pm2 delete all &&
