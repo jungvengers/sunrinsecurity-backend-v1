@@ -93,6 +93,7 @@ describe("Media", function () {
     describe("Download Image", function () {
         let filename = ""
         before("Upload image", async function () {
+            this.timeout(10000)
             const response = await request(app)
                 .post("/media")
                 .set("Authorization", "Bearer " + token)
