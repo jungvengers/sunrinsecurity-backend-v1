@@ -68,7 +68,7 @@ describe("Media", function () {
                     .attach("attachment", "tests/media/empty.nothing")
                     .expect(400)
             })
-        })
+        }).timeout(50000)
         describe("Success cases", function () {
             it("Upload an image", async function () {
                 const response = await request(app)
@@ -88,8 +88,8 @@ describe("Media", function () {
 
                 fileList.push(JSON.parse(response.text).filename)
             }).timeout(10000)
-        })
-    })
+        }).timeout(50000)
+    }).timeout(100000)
     describe("Download Image", function () {
         let filename = ""
         before("Upload image", async function () {
@@ -116,7 +116,7 @@ describe("Media", function () {
                     .expect(200)
             }).timeout(10000)
         })
-    })
+    }).timeout(50000)
     describe("Get S3 File", function () {
         describe("Failure cases", function () {
             it("Should return 403 for Access Forbidden", async function () {
@@ -135,6 +135,6 @@ describe("Media", function () {
                     assert.strictEqual(response.status, 200)
                 }
             }).timeout(10000)
-        })
+        }).timeout(50000)
     })
 })

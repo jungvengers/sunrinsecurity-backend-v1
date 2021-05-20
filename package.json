@@ -11,7 +11,8 @@
     "dockerize-test": "export DB_URI=mongodb://mongodb/test; NODE_PATH=src/ ts-mocha -p ./tsconfig.json ./src/app/*/tests.ts",
     "build": "tsc -p .",
     "start": "cross-env NODE_PATH=dist/ node dist/index.js",
-    "production-start": "cross-env NODE_PATH=dist/ pm2 start -i max dist/index.js"
+    "production-start": "cross-env NODE_PATH=dist/ pm2 start -i max dist/index.js",
+    "deploy": "ts-node script/deploy.ts"
   },
   "dependencies": {
     "aws-sdk": "^2.906.0",
