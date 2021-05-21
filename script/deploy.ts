@@ -17,7 +17,6 @@ const deploy = async () => {
         git pull &&
         yarn build &&
         pm2 delete all &&
-        docker ps &&
         yarn production - start
     `)
 
